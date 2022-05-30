@@ -712,15 +712,15 @@ def main(RandGenSEED, Number, Ms, COME, MinMass, MaxMass, yMax, PDFSet, PDFScale
     qqbar2gg_k = sumddbargg + sumuubargg + sumssbargg + sumccbargg + sumbbbargg + sumttbargg
     
     
-    qqbar2gg_k = qqbar2gg_k*(10**9)*0.389379*DeltaMass
+    qqbar2gg_k = qqbar2gg_k*(10**9)*0.389379
     
-    gqbar2gqbar_k =gqbar2gqbar_k*(10**9)*0.389379*DeltaMass
+    gqbar2gqbar_k =gqbar2gqbar_k*(10**9)*0.389379
     
-    gq2gq_k =gq2gq_k*(10**9)*0.389379*DeltaMass
+    gq2gq_k =gq2gq_k*(10**9)*0.389379
     
-    gg2qqbar_k =gg2qqbar_k*(10**9)*0.389379*DeltaMass
+    gg2qqbar_k =gg2qqbar_k*(10**9)*0.389379
     
-    gg2gg_k =gg2gg_k*(10**9)*0.389379*DeltaMass
+    gg2gg_k =gg2gg_k*(10**9)*0.389379
     
     return qqbar2gg_k, gqbar2gqbar_k, gq2gq_k, gg2qqbar_k, gg2gg_k
 
@@ -743,9 +743,9 @@ if checker() == True:
         qqbar2gg_k, gqbar2gqbar_k, gq2gq_k, gg2qqbar_k, gg2gg_k = main(args.RandGenSEEDvalue, args.Numbervalue, args.Msvalue, args.COMEvalue, args.MinMassvalue, args.MaxMassvalue, args.yMaxvalue, args.PDFSetvalue, args.PDFScalevalue, args.Couplingvalue, args.CouplingScalevalue, args.FirstStringCoeffvalue, args.SecondStringCoeffvalue, args.QCDCoeffvalue, args.dMassvalue, args.uMassvalue, args.sMassvalue, args.cMassvalue, args.bMassvalue, args.tMassvalue, args.gg2ggvalue, args.gg2qqbarvalue, args.gq2gqvalue, args.gqbar2gqbarvalue, args.qqbar2ggvalue, args.gg2gGammavalue, args.gq2qGammavalue, mass)
         
         qqbar2gg.append(qqbar2gg_k)
-        gqbar2gqbar.append(gg2gg_k)
-        gq2gq.append(gg2gg_k)
-        gg2qqbar.append(gg2gg_k)
+        gqbar2gqbar.append(gqbar2gqbar_k)
+        gq2gq.append(gq2gq_k)
+        gg2qqbar.append(gg2qqbar_k)
         gg2gg.append(gg2gg_k)
         
     
@@ -768,6 +768,12 @@ if checker() == True:
 
     with open("./qqbar2gg5.txt", "a") as file:
         for s in qqbar2gg:
+            file.write("%s\n" % s)
+            
+    
+    total_diff = map(lambda a,b,c,d,e:a+b+c+d+e, gg2gg, gg2qqbar, gq2gq, gqbar2gqbar, qqbar2gg)
+    with open("./diff_total.txt", "a") as file:
+        for s in total_diff:
             file.write("%s\n" % s)
 
 else:
