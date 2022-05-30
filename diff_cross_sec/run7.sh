@@ -1,6 +1,6 @@
-export PATH=$PATH:/hepusers2/kmoc/LHAPDF/LHAPDF-install/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/hepusers2/kmoc/LHAPDF/LHAPDF-install/lib
-export PYTHONPATH=/hepusers2/kmoc/LHAPDF/LHAPDF-install/lib64/python2.7/site-packages
+export PATH=$PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+export PYTHONPATH=$PYTHONPATH
 
 
 lowerBound=1000 #Lower bound (GeV) for mass
@@ -21,7 +21,7 @@ PDFScale=$Ms          #### Scale at which PDFs are Determined. The Default Value
 
 ################### SubProcessess #################
 
-		gg2gg=true       #### gg -> gg       Subprocess (ID = 1)
+gg2gg=true       #### gg -> gg       Subprocess (ID = 1)
 gg2qqbar=True    #### gg -> qqbar    Subprocess (ID = 2)
 gq2gq=True       #### gq -> gq       Subprocess (ID = 3)
 gqbar2gqbar=True #### gqbar -> gqbar Subprocess (ID = 4)
