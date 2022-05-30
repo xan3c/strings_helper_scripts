@@ -766,7 +766,7 @@ if checker() == True:
         for s in gqbar2gqbar:
             file.write("%s\n" % s)
 
-    with open("./qqbar2gg5.txt", "a") as file:
+    #with open("./qqbar2gg5.txt", "a") as file:
         for s in qqbar2gg:
             file.write("%s\n" % s)
             
@@ -779,3 +779,4 @@ if checker() == True:
 else:
     print('Error')
     
+
