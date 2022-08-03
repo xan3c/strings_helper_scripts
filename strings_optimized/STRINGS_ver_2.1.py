@@ -419,16 +419,20 @@ def main(RandGenSEED, Number, Ms, COME, MinMass, MaxMass, yMax, PDFSet, PDFScale
             return(0)
         
     # Function to numerically integrate
-    def Integrate(Func, args, N, a, b, x):
+    def Integrate(Func, args, N, a, x):
         value = 0
+        b = 0
         for i in range(1, N+1):
             Y = a+((i-(1/2))*((b-a)/N))
             c = -(x - math.fabs(Y))
-            d = x - math.fabs(Y)
+            d = 0
             for j in range(1, N+1):
                 y = c+((j-(1/2))*((d-c)/N))
                 params = [Y, y]
-                value += ((b-a)/N)*((d-c)/N)*Func(params, *args)
+                value += ((b-a)/N)*((d-c)/N)*Func(params, *args) *2 
+                
+        value = value *2
+        
         return(value)
     
     # Number of integration slices
