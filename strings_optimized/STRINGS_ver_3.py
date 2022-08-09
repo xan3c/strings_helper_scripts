@@ -12,6 +12,7 @@ import random
 import argparse
 import time
 from subprocess import call
+from uuid import uuid4
 
 ############################################################################################################
 # Event Generator Main Code
@@ -419,7 +420,7 @@ def main(RandGenSEED, Number, Ms, COME, MinMass, MaxMass, yMax, PDFSet, PDFScale
             return(0)
         
     # Function to numerically integrate
-    def Integrate(Func, args, N, a, x):
+    def Integrate(Func, args, N, a, b, x):
         value = 0
         b = 0
         for i in range(1, N+1):
@@ -560,7 +561,8 @@ def main(RandGenSEED, Number, Ms, COME, MinMass, MaxMass, yMax, PDFSet, PDFScale
     TotalCrossSection = 0
  
     # Creating the LHE file for saving the events
-    fh = open("events.lhe", "w")
+    filename_lhe = str(uuid4()) + '.lhe'
+    fh = open(filename_lhe, "w")
 
     # Counting number of events total and of each type
     numberofevents = 0
